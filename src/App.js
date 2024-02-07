@@ -2,11 +2,13 @@ import logo from './logo.svg';
 import './App.css';
 import { Outlet, Route, Routes, useRoutes } from 'react-router-dom';
 import{
-  loginPage,
+ 
   HomePage,
   HomeContent,
   Dashboard,
-  Settings
+  Settings,
+  LoginPage,
+  RequireAuth
 
 } from'./components/Global/Global'
 
@@ -22,15 +24,15 @@ function App() {
         },
         {
           path:'/login',
-          element:<loginPage></loginPage>
+          element:<LoginPage></LoginPage>
         },
         {
           path:'/dashboard',
-          element:<Dashboard></Dashboard>
+          element:<RequireAuth><Dashboard/></RequireAuth>
         },
         {
           path:'/settings',
-          element:<div>Settings</div>
+          element: <RequireAuth><Settings/></RequireAuth>
         } ,
 
       ] ,
